@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ubumwe Skating Club — Club de roller en ligne au Burundi</title>
+<meta name="description" content="Ubumwe Skating Club : promouvoir le roller en ligne au Burundi, développer les talents et rassembler une communauté passionnée." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#12181A',
+          inksoft: '#1C2427',
+          bcred: '#C8102E',
+          bcreddark: '#9C0C24',
+          bcgreen: '#0B6E4F',
+          bcgreendark: '#08543C',
+          sand: '#F6F4EE',
+        },
+        fontFamily: {
+          display: ['"League Spartan"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'League Spartan', sans-serif; }
+
+  /* Signature diagonal-cut motif, echoing the diagonal cross of the Burundi flag */
+  .diagonal-cut {
+    clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
+  }
+  .diagonal-cut-rev {
+    clip-path: polygon(0 0%, 100% 5%, 100% 100%, 0% 95%);
+  }
+  .notch {
+    clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%, 0 26px);
+  }
+  @media (min-width: 768px) {
+    .notch { clip-path: polygon(34px 0, 100% 0, 100% 100%, 0 100%, 0 34px); }
+  }
+
+  .stripe-divider {
+    clip-path: polygon(0 40%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  /* Single orchestrated hero entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-in-1 { animation: riseFade 0.8s cubic-bezier(.22,.68,.35,1) 0.05s both; }
+    .hero-in-2 { animation: riseFade 0.8s cubic-bezier(.22,.68,.35,1) 0.2s both; }
+    .hero-in-3 { animation: riseFade 0.8s cubic-bezier(.22,.68,.35,1) 0.35s both; }
+    .hero-in-4 { animation: riseFade 0.8s cubic-bezier(.22,.68,.35,1) 0.5s both; }
+    .hero-img-in { animation: revealImg 1s cubic-bezier(.22,.68,.35,1) 0.25s both; }
+  }
+  @keyframes riseFade {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes revealImg {
+    from { opacity: 0; transform: scale(1.06); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background: #C8102E;
+    transition: width 0.25s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 18px 30px -12px rgba(0,0,0,0.35); }
+
+  .gallery-item img { transition: transform 0.5s ease; }
+  .gallery-item:hover img { transform: scale(1.07); }
+
+  .gallery-scroll { scrollbar-width: thin; scrollbar-color: #C8102E #E7E3D8; }
+  .gallery-scroll::-webkit-scrollbar { height: 8px; }
+  .gallery-scroll::-webkit-scrollbar-track { background: #E7E3D8; border-radius: 999px; }
+  .gallery-scroll::-webkit-scrollbar-thumb { background: #C8102E; border-radius: 999px; }
+
+  .btn-primary { transition: background-color 0.2s ease, transform 0.2s ease; }
+  .btn-primary:hover { background-color: #9C0C24; transform: translateY(-2px); }
+  .btn-outline { transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+  .btn-outline:hover { background-color: #F6F4EE; color: #12181A; transform: translateY(-2px); }
+
+  #site-header { transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; }
+  #site-header.scrolled { box-shadow: 0 8px 20px -12px rgba(0,0,0,0.5); }
+
+  input:focus, textarea:focus, button:focus-visible, a:focus-visible {
+    outline: 2px solid #C8102E;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+
+<body class="bg-sand text-ink antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-ink focus:px-4 focus:py-2 focus:rounded z-50">Aller au contenu</a>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 bg-ink/95 backdrop-blur">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+    <a href="#accueil" class="flex items-center gap-3 group">
+      <span class="shrink-0 w-11 h-11 rounded-full overflow-hidden bg-sand ring-2 ring-white/20">
+        <img src="images/logo.jpg" alt="Écusson Ubumwe Skating Club" class="w-full h-full object-cover" />
+      </span>
+      <span class="font-display font-bold text-white text-lg leading-none tracking-tight">Ubumwe<br class="hidden sm:block"/> Skating Club</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 font-display font-semibold text-sm text-white/90 tracking-wide">
+      <a href="#accueil" class="nav-link">Accueil</a>
+      <a href="#apropos" class="nav-link">À propos</a>
+      <a href="#activites" class="nav-link">Activités</a>
+      <a href="#galerie" class="nav-link">Galerie</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <a href="#contact" class="hidden md:inline-block bg-bcred hover:bg-bcreddark text-white font-display font-semibold text-sm px-5 py-2.5 rounded-sm transition-colors">
+      Nous contacter
+    </a>
+
+    <button id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" class="md:hidden text-white p-2">
+      <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg id="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
+        <line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-ink border-t border-white/10 px-5 pb-6 pt-2">
+    <nav class="flex flex-col gap-4 font-display font-semibold text-white/90">
+      <a href="#accueil" class="mobile-link py-1">Accueil</a>
+      <a href="#apropos" class="mobile-link py-1">À propos</a>
+      <a href="#activites" class="mobile-link py-1">Activités</a>
+      <a href="#galerie" class="mobile-link py-1">Galerie</a>
+      <a href="#contact" class="mobile-link py-1">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section id="accueil" class="relative bg-ink pt-32 pb-24 md:pt-44 md:pb-0 overflow-hidden">
+  <!-- motion stripes -->
+  <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+    <div class="absolute -left-10 top-24 w-[140%] h-2 bg-bcred rotate-[-8deg]"></div>
+    <div class="absolute -left-10 top-40 w-[120%] h-2 bg-white rotate-[-8deg]"></div>
+    <div class="absolute -left-10 top-56 w-[100%] h-2 bg-bcgreen rotate-[-8deg]"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-12 md:gap-8 items-center">
+    <div class="relative z-10">
+      <h1 class="hero-in-1 font-display font-black text-white uppercase leading-[0.92] text-5xl sm:text-6xl lg:text-7xl tracking-tight">
+        Ubumwe<br/>
+        <span class="text-bcred">Skating</span> Club
+      </h1>
+      <p class="hero-in-2 mt-6 text-white/80 text-lg leading-relaxed max-w-md">
+        Promouvoir le roller en ligne au Burundi, développer les talents et rassembler une communauté passionnée.
+      </p>
+      <div class="hero-in-3 mt-9 flex flex-wrap gap-4">
+        <a href="#apropos" class="btn-primary inline-block bg-bcred text-white font-display font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide">
+          Découvrir la fédération
+        </a>
+        <a href="#contact" class="btn-outline inline-block border border-white/40 text-white font-display font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide">
+          Nous contacter
+        </a>
+      </div>
+      <div class="hero-in-4 mt-14 flex items-center gap-6 text-white/50 text-xs font-display font-semibold tracking-wide uppercase">
+        <span>Entraînement</span>
+        <span class="w-1 h-1 rounded-full bg-white/30"></span>
+        <span>Formation</span>
+        <span class="w-1 h-1 rounded-full bg-white/30"></span>
+        <span>Communauté</span>
+      </div>
+    </div>
+
+    <div class="hero-img-in relative h-[340px] sm:h-[420px] md:h-[560px]">
+      <div class="absolute inset-0 diagonal-cut overflow-hidden">
+        <img
+          src="images/hero-jump.jpg"
+          alt="Jeune athlète du club en plein saut au-dessus d'une ligne de plots, en rollers en ligne"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"></div>
+      </div>
+      <div class="hidden md:block absolute -bottom-6 -left-6 w-28 h-28 bg-bcgreen diagonal-cut -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A PROPOS ============ -->
+<section id="apropos" class="bg-sand py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-14 items-center">
+
+    <div class="relative order-2 md:order-1 h-[300px] sm:h-[380px] md:h-[460px]">
+      <div class="absolute inset-0 diagonal-cut-rev overflow-hidden">
+        <img
+          src="images/about-team.jpg"
+          alt="Membres du club roulant en file, bras posés sur les épaules, lors d'un défilé"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div class="hidden md:block absolute -top-6 -right-6 w-24 h-24 bg-bcred diagonal-cut-rev -z-10"></div>
+    </div>
+
+    <div class="order-1 md:order-2">
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-ink">À propos du club</h2>
+      <p class="mt-6 text-ink/80 leading-relaxed text-lg max-w-lg">
+        Ubumwe Skating Club œuvre pour le développement du roller en ligne au Burundi à travers la pratique sportive, la formation des jeunes et la promotion de cette discipline.
+      </p>
+
+      <div class="mt-10 space-y-6">
+        <div class="flex gap-4">
+          <span class="mt-1 w-3 h-3 shrink-0 bg-bcred" style="clip-path: polygon(0 0, 100% 0, 100% 70%, 30% 100%);"></span>
+          <div>
+            <h3 class="font-display font-bold text-xl text-ink">Notre mission</h3>
+            <p class="mt-1 text-ink/70 leading-relaxed max-w-md">Développer la pratique du roller en ligne à travers le pays, former une nouvelle génération de patineurs et créer des occasions régulières de s'entraîner et de progresser ensemble.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="mt-1 w-3 h-3 shrink-0 bg-bcgreen" style="clip-path: polygon(0 0, 100% 0, 100% 70%, 30% 100%);"></span>
+          <div>
+            <h3 class="font-display font-bold text-xl text-ink">Notre vision</h3>
+            <p class="mt-1 text-ink/70 leading-relaxed max-w-md">Voir le roller en ligne reconnu comme un sport accessible et respecté au Burundi, porté par une communauté active à Bujumbura et au-delà.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ACTIVITES ============ -->
+<section id="activites" class="bg-ink py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-xl">
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-white">Nos activités</h2>
+      <p class="mt-5 text-white/70 text-lg leading-relaxed">Ce que nous organisons pour faire vivre le roller en ligne au quotidien.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div class="card-lift notch bg-sand p-7">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6"/><path d="M17 5l1.5-1.5"/>
+        </svg>
+        <h3 class="mt-5 font-display font-bold text-lg text-ink">Entraînements</h3>
+        <p class="mt-2 text-ink/70 text-sm leading-relaxed">Des séances régulières pour progresser en technique, en vitesse et en endurance, encadrées par des patineurs expérimentés.</p>
+      </div>
+
+      <div class="card-lift notch bg-sand p-7">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B6E4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M7 10.5v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/>
+        </svg>
+        <h3 class="mt-5 font-display font-bold text-lg text-ink">Initiations au roller</h3>
+        <p class="mt-2 text-ink/70 text-sm leading-relaxed">Des sessions d'introduction pour les débutants, quel que soit l'âge, avec prêt de matériel et encadrement pas à pas.</p>
+      </div>
+
+      <div class="card-lift notch bg-sand p-7">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="9" r="3"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5"/><path d="M12 20c0-2.5 2.4-4.5 5.5-4.5S22 17.5 22 20"/>
+        </svg>
+        <h3 class="mt-5 font-display font-bold text-lg text-ink">Sessions communautaires</h3>
+        <p class="mt-2 text-ink/70 text-sm leading-relaxed">Des sorties conviviales dans les rues et espaces de Bujumbura pour patiner ensemble et faire découvrir le sport.</p>
+      </div>
+
+      <div class="card-lift notch bg-sand p-7">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B6E4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a3 3 0 0 0 3 5"/><path d="M17 5h3a3 3 0 0 1-3 5"/>
+        </svg>
+        <h3 class="mt-5 font-display font-bold text-lg text-ink">Événements sportifs</h3>
+        <p class="mt-2 text-ink/70 text-sm leading-relaxed">Représentation du Burundi lors de compétitions et rassemblements de roller en ligne, à l'échelle nationale et régionale.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section id="galerie" class="bg-sand py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="max-w-xl flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-ink">Galerie</h2>
+        <p class="mt-5 text-ink/70 text-lg leading-relaxed">Un aperçu de nos entraînements, de nos athlètes et de nos rassemblements.</p>
+      </div>
+    </div>
+    <p class="mt-3 text-ink/40 text-xs font-display font-semibold tracking-wide uppercase hidden sm:block">Faites glisser pour voir plus →</p>
+  </div>
+
+  <div class="gallery-scroll mt-8 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 pl-5 pr-5 md:pl-8 md:pr-8">
+    <div class="gallery-item notch overflow-hidden h-72 w-[78%] sm:w-72 md:w-80 shrink-0 snap-start">
+      <img src="images/gallery-girls.jpg" alt="Quatre jeunes patineuses du club posant ensemble sur le terrain" class="w-full h-full object-cover" loading="lazy"/>
+    </div>
+    <div class="gallery-item notch overflow-hidden h-72 w-[78%] sm:w-72 md:w-80 shrink-0 snap-start">
+      <img src="images/gallery-medals.jpg" alt="Membres du club médaillés lors d'un marathon, en rollers" class="w-full h-full object-cover" loading="lazy"/>
+    </div>
+    <div class="gallery-item notch overflow-hidden h-72 w-[78%] sm:w-72 md:w-80 shrink-0 snap-start">
+      <img src="images/gallery-kid.jpg" alt="Jeune patineur s'entraînant, équipé de son casque et de ses protections" class="w-full h-full object-cover" loading="lazy"/>
+    </div>
+    <div class="gallery-item notch overflow-hidden h-72 w-[78%] sm:w-72 md:w-80 shrink-0 snap-start">
+      <img src="images/gallery-kids2.jpg" alt="Deux jeunes patineurs du club posant côte à côte sur le terrain" class="w-full h-full object-cover" loading="lazy"/>
+    </div>
+    <div aria-hidden="true" class="shrink-0 w-px"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="bg-ink py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-16">
+
+    <div>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-white">Contact</h2>
+      <p class="mt-5 text-white/70 text-lg leading-relaxed max-w-md">Une question, une envie de rejoindre la communauté ou un partenariat à discuter ? Écrivez-nous.</p>
+
+      <div class="mt-10 space-y-6">
+        <div class="flex items-center gap-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="1.8" class="shrink-0"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="M4 6l8 7 8-7" stroke-linejoin="round"/></svg>
+          <a href="mailto:contact@ubumweskatingclub.bi" class="text-white/90 hover:text-white transition-colors">contact@ubumweskatingclub.bi</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B6E4F" stroke-width="1.8" class="shrink-0"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z" stroke-linejoin="round"/></svg>
+          <a href="tel:+25767757578" class="text-white/90 hover:text-white transition-colors">+257 67 75 75 78</a>
+        </div>
+        <div class="flex items-center gap-5 pt-2">
+          <a href="https://www.facebook.com/profile.php?id=61581773140024" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="text-white/70 hover:text-white transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46" stroke-linecap="round"/><path d="M14 3c.5 2.5 2 4 5 4.3" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-inksoft p-7 md:p-9 notch">
+      <form id="contact-form" class="space-y-5">
+        <div>
+          <label for="name" class="block text-sm font-medium text-white/80 mb-1.5">Nom</label>
+          <input id="name" name="name" type="text" required class="w-full bg-ink border border-white/15 rounded-sm px-4 py-3 text-white placeholder-white/30" placeholder="Votre nom">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-white/80 mb-1.5">Email</label>
+          <input id="email" name="email" type="email" required class="w-full bg-ink border border-white/15 rounded-sm px-4 py-3 text-white placeholder-white/30" placeholder="vous@exemple.com">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-white/80 mb-1.5">Message</label>
+          <textarea id="message" name="message" rows="4" required class="w-full bg-ink border border-white/15 rounded-sm px-4 py-3 text-white placeholder-white/30 resize-none" placeholder="Votre message"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full bg-bcred text-white font-display font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide">
+          Envoyer le message
+        </button>
+        <p id="form-note" class="text-xs text-white/40 leading-relaxed">L'envoi ouvre votre application de messagerie avec le message pré-rempli, à destination de contact@ubumweskatingclub.bi.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+    <div class="flex items-center gap-3">
+      <span class="shrink-0 w-8 h-8 rounded-full overflow-hidden bg-sand ring-1 ring-white/20">
+        <img src="images/logo.jpg" alt="Écusson Ubumwe Skating Club" class="w-full h-full object-cover" />
+      </span>
+      <span class="font-display font-semibold text-white/90 text-sm">Ubumwe Skating Club</span>
+    </div>
+    <nav class="flex gap-6 font-display text-sm text-white/60">
+      <a href="#accueil" class="hover:text-white transition-colors">Accueil</a>
+      <a href="#apropos" class="hover:text-white transition-colors">À propos</a>
+      <a href="#activites" class="hover:text-white transition-colors">Activités</a>
+      <a href="#galerie" class="hover:text-white transition-colors">Galerie</a>
+      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </nav>
+    <p class="text-white/40 text-xs">© 2026 Ubumwe Skating Club. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Header background on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Contact form -> mailto fallback (no backend)
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent('Message depuis le site — ' + name);
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:contact@ubumweskatingclub.bi?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
